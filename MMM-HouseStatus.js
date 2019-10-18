@@ -5,7 +5,7 @@
 
     getStyles: function() {
         return [
-            //this.file('map.css'),
+            this.file('map.css'),
         ]
     },
 
@@ -14,9 +14,7 @@
         var wrapper = document.createElement("div");
 
 
-        wrapper.innerHTML = "hello";
-            /*
-            '<div class="map_container" >' +
+        wrapper.innerHTML = '<div class="map_container" >' +
             '<div class="living room">' +
             '<div>' +
             '<span class="temp">76°F</span>' +
@@ -85,7 +83,7 @@
             '</div>' +
             '<img src="map.png" class="map" />' +
             '</div>';
-*/
+
         return wrapper;
     }
 });
