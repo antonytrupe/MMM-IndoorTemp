@@ -1,0 +1,109 @@
+html {
+  font-weight: bold;
+}
+
+.map_container {
+  position: relative;
+  display:inline-block;
+}
+
+img.map {
+width: 600px;
+}
+
+.room {
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  --border: solid thin;
+}
+
+.room>div
+{
+ position: relative;
+  top: 50%;
+  display: block;
+  transform: translateY(-50%);
+}
+
+.room span {
+  font-size:small;
+  display:block;
+}
+
+.gabe_bed.room {
+  left: 63%;
+  top: 42%;
+  width: 15%;
+  height: 10%;
+}
+
+.spare.room {
+  left: 63%;
+  top: 53%;
+  width: 15%;
+  height: 12%;
+}
+
+.den.room {
+  left: 42%;
+  top: 74%;
+  width: 36%;
+  height: 17%;
+}
+
+.shop.room {
+  left: 42%;
+  top: 42%;
+  width: 16%;
+  height: 31%;
+}
+
+.entry.room {
+  left: 37%;
+  top: 34%;
+  width: 11%;
+  height: 5%;
+}
+
+.master_bath.room {
+  left: 46%;
+  top: 10%;
+  width: 12%;
+  height: 6%;
+}
+
+.hallway_bath.room {
+  left: 46%;
+  top: 16%;
+  width: 12%;
+  height: 6%;
+}
+
+.alex_bed.room {
+  left: 64%;
+  top: 26%;
+  width: 13%;
+  height: 12%;
+}
+
+.living.room {
+  left: 15%;
+  top: 23%;
+  width: 22%;
+  height: 16%;
+}
+
+.master_bed.room {
+  left: 59%;
+  top: 10%;
+  width: 18%;
+  height: 12%;
+}
+
+.ellie_bed.room {
+  left: 49%;
+  top: 29%;
+  width: 13%;
+  height: 9%;
+}
