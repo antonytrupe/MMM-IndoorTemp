@@ -5,7 +5,7 @@
 
     getStyles: function() {
         return [
-            this.file('map.css'),
+            this.file('public/map.css'),
         ]
     },
 
@@ -81,7 +81,7 @@
             '<span class="rh"></span>' +
             '</div>' +
             '</div>' +
-            '<img src="map.png" class="map" />' +
+            '<img src="public/map.png" class="map" />' +
             '</div>';
 
         return wrapper;
