@@ -81,7 +81,7 @@
             '<span class="rh"></span>' +
             '</div>' +
             '</div>' +
-            '<img src="public/map.png" class="map" />' +
+            '<img src="'+this.file('public/map.png')+'" class="map" />' +
             '</div>';
 
         return wrapper;
