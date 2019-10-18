@@ -5,7 +5,7 @@
 
     getStyles: function() {
         return [
-            //this.file('public/map.css'),
+            //this.file('map.css'),
         ]
     },
 
