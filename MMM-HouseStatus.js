@@ -5,83 +5,51 @@
 
     getStyles: function() {
         return [
-            this.file('public/map.css'),
+            //this.file('public/map.css'),
         ]
     },
+    getScripts:function(){return ['https://code.jquery.com/jquery.min.js'];},
+
+    notificationReceived: function(notification, payload, sender) {
+        if(notification!='CLOCK_SECOND'){
+          Log.info('notificationReceived:'+notification);
+        }
+        switch(notification) {
+          case "DOM_OBJECTS_CREATED":
+            //TODO start polling?
+            this.sendSocketNotification('GET_HOUSE_STATS');
+        }
+      },
+      
+      socketNotificationReceived: function(notification,payload){
+        Log.info('socketNotificationReceived:'+notification+':'+payload);
+          if(notification==="HOUSE_STATS"){
+            //TODO update DOM
+            // [{'name':'living room','attributes':{'temp':20.2,'rh':.45}}]
+            payload.forEach((location) => {
+              var cssName='.'+location.name.split(' ').join('.');
+              console.log(cssName);
+              //TODO loop over the attributes
+              location.attributes.forEach((attribute)=>{
+                console.log(attribute);
+                $(cssName+' .' +attribute.name).html(attribute.value);
+              });
+            });
+            //$('.living.room .temp').html(payload);
+          }
+      },
 
     // Override dom generator.
     getDom: function() {
+      Log.info('getDom');
         var wrapper = document.createElement("div");
 
-
-        wrapper.innerHTML = '<div class="map_container" >' +
+        wrapper.innerHTML = '<div class="normal medium" >' +
             '<div class="living room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
+            '<span class=room_name>Living Room</span>'+
+            '<span class="temp"></span>' +
             '<span class="rh"></span>' +
             '</div>' +
-            '</div>' +
-            '<div class="master_bed room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh">53%RH</span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="ellie_bed room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="alex_bed room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh">53%RH</span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="hallway_bath room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="master_bath room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="entry room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh">43%RH</span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="gabe_bed room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="spare room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="den room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<div class="shop room">' +
-            '<div>' +
-            '<span class="temp">76°F</span>' +
-            '<span class="rh"></span>' +
-            '</div>' +
-            '</div>' +
-            '<img src="'+this.file('public/map.png')+'" class="map" />' +
             '</div>';
 
         return wrapper;
