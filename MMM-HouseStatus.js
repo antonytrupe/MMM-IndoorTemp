@@ -43,6 +43,11 @@
             var cssName='.'+row.location.split(' ').join('.');
             //console.log(cssName);
             //TODO loop over the attributes
+            if(row.attribute=='tempC')
+            {
+              //convert to F, round to 1 decimal place
+              row.value=Math.round((row.value*9/5 +32)*10)/10;
+            }
             $(cssName+' .' +row.attribute).html(row.value);
           });
           //$('.living.room .temp').html(payload);
