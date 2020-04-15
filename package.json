@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/antonytrupe/MMM-HouseStatus/issues"
   },
-  "homepage": "https://github.com/antonytrupe/MMM-HouseStatus#readme"
+  "homepage": "https://github.com/antonytrupe/MMM-HouseStatus#readme",
+  "dependencies": {},
+  "devDependencies": {}
 }

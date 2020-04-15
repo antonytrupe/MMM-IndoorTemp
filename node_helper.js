@@ -7,11 +7,31 @@ module.exports = NodeHelper.create({
     console.log("Starting module: " + this.name);
     //this.sendSocketNotification("FOO","33.3");
   },
-  socketNotificationReceived: function(notification, payload) {
-    switch(notification) {
-      case "GET_HOUSE_STATS":
-        this.sendSocketNotification("HOUSE_STATS", [{'name':'living room','attributes':[{'name':'temp','value':20.2},{'name':'rh','value':.45}]}]);
-        break;
-    }
+  getData:function(){
+    var self=this;
+    //console.log('getData');
+    let db = new sqlite3.Database('/home/pi/node_modules/house-sensor/test.db',sqlite3.OPEN_READONLY);
+    let sql = 'select * from currentdata';
+    //db.serialize(function(){
+      db.all(sql,[],(err, rows) => {
+        if (err) {
+          throw err;
+        }
+        //console.log(rows.slice(0));
+        //console.log(JSON.stringify(rows));
+        self.sendSocketNotification("HOUSE_STATS", rows);
+        db.close();
+      });
+    //});
   },
+  socketNotificationReceived: function(notification, payload) {
+    var self = this;
+    //console.log(notification);
+    switch(notification) {
+      case "HOUSE_STATS":{
+        self.getData();
+        break;
+      }
+    }
+  }
 });
