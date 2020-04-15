@@ -9,5 +9,7 @@ https://stackoverflow.com/questions/32504307/how-to-use-sqlite3-module-with-elec
 }
 
 npm install --save-dev electron-builder
+
 npm install --save sqlite3
+
 npm run postinstall
