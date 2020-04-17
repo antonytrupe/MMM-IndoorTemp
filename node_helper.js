@@ -10,7 +10,7 @@ module.exports = NodeHelper.create({
   getData:function(){
     var self=this;
     //console.log('getData');
-    let db = new sqlite3.Database('/home/pi/node_modules/house-sensor/test.db',sqlite3.OPEN_READONLY);
+    let db = new sqlite3.Database('/home/pi/node_modules/dobby-pi-base/test.db',sqlite3.OPEN_READONLY);
     let sql = 'select * from currentdata';
     //db.serialize(function(){
       db.all(sql,[],(err, rows) => {
