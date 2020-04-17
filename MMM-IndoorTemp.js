@@ -1,4 +1,4 @@
-﻿Module.register("MMM-HouseStatus", {
+﻿Module.register("MMM-IndoorTemp", {
     // Default module config.
     defaults: {
       updateInterval: 10*1000,//seconds * milliseconds,
